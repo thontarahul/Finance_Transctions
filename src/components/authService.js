@@ -1,4 +1,4 @@
-import React from'react';
+
 import axios from 'axios';
  
 const API_URL = 'http://yourapi.com/api/auth/';
@@ -21,7 +21,7 @@ const login = (username, password) => {
  
   return axios
  
-    .post(API_URL + 'signin', {
+    .post('http://192.168.0.127:8082/api/login'+ 'signin', {
  
       username,
  

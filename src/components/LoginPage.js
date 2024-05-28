@@ -1,30 +1,33 @@
-import React, { useState } from "react";
-import authService from "./authService";
-import { Link, useNavigate } from "react-router-dom";
-import "./LoginPage.css"; // Importing the CSS for styling
 
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import authService from "./authService";
+import loginImg from '../Assets/Images/logindataworks.png';
+import "./LoginPage.css";
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+ 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+ 
   const handleLogin = async (event) => {
     event.preventDefault();
-
     try {
       await authService.login(username, password);
-      navigate("/home"); // Redirect to home after successful login
+      navigate("/home");
     } catch (error) {
       setError("Login failed");
     }
   };
-
+ 
   return (
     <div className="login-container">
       <div className="login-box">
         <img
-          src="logo.png" // Update with the path to your logo image
+          src={loginImg}
           alt="Financial Works Logo"
           className="logo"
         />
@@ -39,13 +42,17 @@ function LoginPage() {
               required
             />
           </div>
-          <div className="input-group">
+          <div className="input-group password-input">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+            />
+            <VisibilityOffIcon
+              className="password-toggle-icon"
+              onClick={() => setShowPassword(!showPassword)}
             />
           </div>
           <div className="options">
@@ -65,5 +72,6 @@ function LoginPage() {
     </div>
   );
 }
-
+ 
 export default LoginPage;
+ 
