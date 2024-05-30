@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from './components/LoginPage';
-import SignupPage from './components/SignupPage';
-import HomePage from './components/HomePage';
+import LoginPage from "./components/AuthService/Login_Page/LoginPage";
+import SignupPage from "./components/AuthService/Signup_Page/SignupPage";
+import HomePage from "./components/Home/Home_Page/HomePage";
 // import ForgotPasswordPage from './components/ForgotPasswordPage'; // Import the ForgotPasswordPage component
 
 function App() {
@@ -20,5 +20,18 @@ function App() {
 }
 
 export default App;
+
+// import React from "react";
+// import HomePage from './components/Home/Home_Page/HomePage'
+
+// function App() {
+//   return (
+//     <div>
+//        <HomePage/>
+//     </div>
+//   )
+// }
+
+// export default App
 
 

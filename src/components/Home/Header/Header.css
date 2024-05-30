@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .left-section {
+    flex: 1;
+  }
+  
+  .left-image {
+    height: 50px; /* Adjust as needed */
+  }
+  
+  .right-section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-image {
+    height: 40px; /* Adjust as needed */
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+  
+  .text-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .full-name {
+    font-weight: bold;
+  }
+  
+  .designation {
+    font-size: 0.9em;
+    color: #6c757d;
+  }
+  

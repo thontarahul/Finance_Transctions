@@ -55,7 +55,7 @@
   }
   
   .signup-button {
-    background-color: #1a237e;
+    background-color: #1A237E;
     color: white;
     padding: 8px; /* Smaller padding */
     border: none;
@@ -66,11 +66,26 @@
   }
   
   .signup-button:hover {
-    background-color: #0056b3;
+    background-color: #1A237E;
+    
+  }
+
+  .ok-button {
+    background-color: #1A237E;
+    ;
+    color: white;
+    padding: 8px; /* Smaller padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width:55%;
+    font-size: 14px;
+    align-items: center;
+    margin-left: 50px; /* Smaller font size */
   }
   
   .login-link {
-    color: #007bff;
+    color: #1A237E;
     text-decoration: none;
     font-weight: bold;
   }
