@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./components/AuthService/Login_Page/LoginPage";
 import SignupPage from "./components/AuthService/Signup_Page/SignupPage";
 import HomePage from "./components/Home/Home_Page/HomePage";
-// import ForgotPasswordPage from './components/ForgotPasswordPage'; // Import the ForgotPasswordPage component
+import LogoutSuccessPage from './components/LogoutSuccessPage';
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/home" element={<HomePage />} />
-        {/* <Route path="/forgot-password" element={<ForgotPasswordPage />} /> Route for ForgotPasswordPage */}
+        <Route path="/home/*" element={<HomePage />} /> {/* Notice the /* to match nested routes */}
+        <Route path="/logout-success" element={<LogoutSuccessPage />} />
         <Route path="/" element={<LoginPage />} />
       </Routes>
     </Router>
@@ -20,6 +20,7 @@ function App() {
 }
 
 export default App;
+
 
 // import React from "react";
 // import HomePage from './components/Home/Home_Page/HomePage'
@@ -35,3 +36,18 @@ export default App;
 // export default App
 
 
+
+// function App() {
+//   return (
+//     <Router>
+//       <Header />
+//       <Routes>
+//         <Route path="/login" element={<LoginPage />} />
+//         <Route path="/logout-success" element={<LogoutSuccessPage />} />
+//         {/* Add other routes as necessary */}
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;

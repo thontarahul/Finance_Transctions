@@ -20,3 +20,11 @@ function Header({ leftImage, rightImage, fullName, designation }) {
 }
 
 export default Header;
+
+
+
+
+// leftImage="/path/to/left-image.jpg" 
+//         rightImage="/path/to/right-image.jpg" 
+//         fullName="John Doe" 
+//         designation="Software Engineer" 

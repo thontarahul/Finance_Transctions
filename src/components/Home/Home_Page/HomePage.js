@@ -52,9 +52,8 @@
 // export default HomePage;
 
 
-
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Dashboard from '../Sidebar/Dashboard/Dashboard';
 import Transactions from '../Sidebar/Dashboard/Transactions/Transactions';
 import BalanceSheet from '../Sidebar/BalanceSheet/BalanceSheet';
@@ -70,22 +69,21 @@ function HomePage() {
   };
 
   return (
-    <Router>
-      <div style={{ display: 'flex' }}>
-        <Navbar />
-        <div style={{ marginLeft: '240px', padding: '20px', width: '100%' }}>
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/transactions" element={<Transactions transactions={transactions} />} />
-            <Route path="/balance-sheet" element={<BalanceSheet />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/add-new" element={<AddNew addTransaction={addTransaction} />} />
-            <Route path="/" element={<Dashboard />} />
-          </Routes>
-        </div>
+    <div style={{ display: 'flex' }}>
+      <Navbar />
+      <div style={{ marginLeft: '240px', padding: '20px', width: '100%' }}>
+        <Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="transactions" element={<Transactions transactions={transactions} />} />
+          <Route path="balance-sheet" element={<BalanceSheet />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="add-new" element={<AddNew addTransaction={addTransaction} />} />
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
       </div>
-    </Router>
+    </div>
   );
 }
 
 export default HomePage;
+

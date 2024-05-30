@@ -1,27 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Box, List, ListItem, ListItemText } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <nav aria-label="main mailbox folders">
-        <List>
-          <ListItem button component={Link} to="/dashboard">
-            <ListItemText primary="Dashboard" />
-          </ListItem>
-          <ListItem button component={Link} to="/transactions">
-            <ListItemText primary="Transactions" />
-          </ListItem>
-          <ListItem button component={Link} to="/balance-sheet">
-            <ListItemText primary="Balance Sheet" />
-          </ListItem>
-          <ListItem button component={Link} to="/reports">
-            <ListItemText primary="Reports" />
-          </ListItem>
-        </List>
-      </nav>
-    </Box>
+    <nav>
+      <ul>
+        <li><NavLink to="/home/dashboard">Dashboard</NavLink></li>
+        <li><NavLink to="/home/transactions">Transactions</NavLink></li>
+        <li><NavLink to="/home/balance-sheet">Balance Sheet</NavLink></li>
+        <li><NavLink to="/home/reports">Reports</NavLink></li>
+        <li><NavLink to="/home/add-new">Add New</NavLink></li>
+      </ul>
+    </nav>
   );
 }
 
