@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import authService from "./authService";
+import { authService } from './authService'; 
 import { Link, useNavigate } from "react-router-dom";
 import signupImg from '../Assets/images/signup_dataworks.jpg'; // Add the path to your signup image
 import "./SignupPage.css";
