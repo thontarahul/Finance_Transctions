@@ -1,22 +1,33 @@
 import React from 'react';
+import { AuthService } from '../../AuthService/Auth_Service/AuthService';
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
-import HomeImage from '../../../Assets/images/Home_img.jpg';
-
-function Header({ leftImage, rightImage, fullName, designation }) {
+import headerimg from '../../../Assets/images/Home_img.jpg';
+ 
+const Header = () => {
+  const navigate = useNavigate();
+ 
+  const handleLogout = () => {
+    AuthService.removeToken();
+    navigate('/logout-success');
+  };
+ 
   return (
     <header className="header">
-      <div className="left-section">
-        <img src={HomeImage} alt="Left Logo" className="left-image" />
+      <div className="logo">
+        <img src={headerimg} alt="Financial Works Logo" />
       </div>
-      <div className="right-section">
-        <img src={rightImage} alt="Profile" className="profile-image" />
-        <div className="text-section">
-          <div className="full-name">{fullName}</div>
-          <div className="designation">{designation}</div>
+      <div className="user-info">
+        <div className="user-details">
+          <p>Full Name</p>
+          <p>Designation</p>
         </div>
+        <button onClick={handleLogout} className="logout-button">
+          Logout
+        </button>
       </div>
     </header>
   );
-}
-
+};
+ 
 export default Header;

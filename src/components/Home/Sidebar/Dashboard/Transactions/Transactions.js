@@ -1,11 +1,10 @@
+
 import React, { useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box, Button, Typography, Select, MenuItem, TextField, IconButton } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import AddNew from './AddNew';
 
 const ActionsCell = ({ onEdit, onDelete, id }) => (
   <>
@@ -25,7 +24,7 @@ const Transactions = () => {
   const token = localStorage.getItem('token');
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 100 }, // Add ID column
+    
     { field: 'description', headerName: 'Description', width: 200 },
     { field: 'date', headerName: 'Date', width: 150 },
     { field: 'amount', headerName: 'Amount', width: 150 },
@@ -38,40 +37,16 @@ const Transactions = () => {
       renderCell: (params) => (
         <ActionsCell
           id={params.row.id}
-          onEdit={() => handleEdit(params.row.ids)}
-          onDelete={() => handleDelete(params.row.ids)}
+          onEdit={() => handleEdit(params.row.id)}
+          onDelete={() => handleDelete(params.row.id)}
         />
       )
     },
   ];
 
-  // const handleEdit = (editId) => {
-  //   navigate(`/home/add-new/${editId}`);
-  // }
-  
-
   const handleEdit = (editId) => {
-    if (window.confirm("Are you sure you want to edit?")) {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      };
-      axios.put(`http://192.168.0.127:8082/api/transactions/${editId}`, config)
-      .then(response => {
-        console.log("Edit response:", response);
-        // Handle success
-        alert("Edited successful");
-        window.location.reload();
-      })
-      .catch(error => {
-        console.error("Error in Editing:", error);
-      });
-      // Assuming you want to navigate to the edit page with the ID
-      navigate(`/home/add-new/${editId}`);
-    }
+    navigate(`/home/add-new/${editId}`);
   }
-  
 
   const handleDelete = (deleteId) => {
     console.log("Deleting transaction with ID:", deleteId);
@@ -84,38 +59,38 @@ const Transactions = () => {
       axios.delete(`http://192.168.0.127:8082/api/transactions/${deleteId}`, config)
         .then(response => {
           console.log("Delete response:", response);
-          // Handle success
           alert("Delete successful");
-          window.location.reload();
+          setTransactions(transactions.filter(transaction => transaction.id !== deleteId));
         })
         .catch(error => {
           console.error("Error deleting:", error);
         });
     }
   }
-  
+
+  const fetchTransactions = async () => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      const response = await axios.get('http://192.168.0.127:8082/api/transactions', config);
+      setTransactions(response.data);
+    } catch (error) {
+      console.error('Error fetching transaction data:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const config = {
-          headers: {
-            "Authorization": `Bearer ${token}`
-          }
-        };
-        const response = await axios.get('http://192.168.0.127:8082/api/transactions', config);
-        setTransactions(response.data);
-      } catch (error) {
-        console.error('Error fetching transaction data:', error);
-      }
-    };
-    fetchData();
+    fetchTransactions();
   }, []);
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
-  const filteredTransactions = transactions.filter(transaction => 
+  const filteredTransactions = transactions.filter(transaction =>
     (transaction.description || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
     (transaction.date || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
     (transaction.amount !== undefined ? transaction.amount.toString().toLowerCase() : '').includes(searchQuery.toLowerCase()) ||
@@ -141,12 +116,11 @@ const Transactions = () => {
         </Select>
         <Button variant="contained" onClick={() => navigate('/home/add-new')}>Add New</Button>
       </Box>
-      <DataGrid rows={filteredTransactions.map((transaction, index) => ({ ...transaction, ids: transaction.id , id: index + 1}))} columns={columns} pageSize={5} />
+      <DataGrid rows={filteredTransactions} columns={columns} pageSize={5} />
     </Box>
   );
 }
 
 export default Transactions;
 
-// Outside of the Transactions component
-<Route path="/home/add-new" element={<AddNew/>} />
+
