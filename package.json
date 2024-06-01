@@ -2,6 +2,7 @@
   "name": "finapp",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://192.168.0.127:8082",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -26,7 +27,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://192.168.0.127:8082",
   "eslintConfig": {
     "extends": [
       "react-app",

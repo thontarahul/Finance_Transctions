@@ -25,7 +25,7 @@ function SignupPage() {
     }
 
     try {
-      await AuthService.register(username, password);  // Using named export
+      await AuthService.register(username, password, confirmPassword);  // Using named export
       setIsRegistered(true); // Set registration state to true upon success
     } catch (error) {
       setError("Failed to register");
