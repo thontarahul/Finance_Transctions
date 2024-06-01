@@ -14,9 +14,9 @@ const HomePage = () => {
   return (
     <div className="app-container">
       <Header />
-      <div className="content-wrapper">
-        <Sidebar />
-        <div className="content">
+      <div className="content-wrapper"> 
+        <Sidebar /> 
+        <div className="content">    
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/transactions" element={<Transactions />} />
