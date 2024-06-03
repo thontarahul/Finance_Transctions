@@ -32,7 +32,6 @@ import LoginPage from "./components/AuthService/Login_Page/LoginPage";
 import SignupPage from "./components/AuthService/Signup_Page/SignupPage";
 import HomePage from "./components/Home/Home_Page/HomePage";
 import LogoutPage from "./components/AuthService/Auth_Service/Logout_Page/LogoutPage";
-// import AddNewTransaction from "./components/Home/AddNewTransaction"; 
 
 function App() {
   return (
@@ -41,7 +40,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/home/*" element={<HomePage />} />
-        {/* <Route path="/home/add-new" element={<AddNewTransaction />} />  */}
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/logoutPage" element={<LogoutPage />} />
       </Routes>
