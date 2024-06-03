@@ -70,11 +70,11 @@
   }
   
   .login-button:hover {
-    background-color: #0056b3;
+    background-color: #1A237E;
   }
   
   .signup-link {
-    color: #007bff;
+    color:#1A237E;
     text-decoration: none;
     font-weight: bold;
   }

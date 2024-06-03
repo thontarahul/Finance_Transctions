@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     background-color:black;
     text-align: center;
     color: white;
@@ -7,6 +7,21 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-  }
+    z-index: 0;
+  } */
 
+
+  .footer {
+    padding: 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
   

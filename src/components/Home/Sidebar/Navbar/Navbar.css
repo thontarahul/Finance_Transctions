@@ -1,0 +1,27 @@
+.Navbar {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    width: 300px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    margin-top:80px;
+  }
+ 
+  .Navbar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+ 
+  .Navbar nav ul li {
+    margin: 20px 0;
+  }
+ 
+  .Navbar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+ 
