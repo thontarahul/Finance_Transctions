@@ -1,22 +1,25 @@
-
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
 function Navbar() {
   return (
-    <nav>
-      <ul>
-        <li><NavLink to="/home/dashboard">Dashboard</NavLink></li>
-        <li><NavLink to="/home/transactions">Transactions</NavLink></li>
-        <li><NavLink to="/home/balance-sheet">Balance Sheet</NavLink></li>
-        <li><NavLink to="/home/reports">Reports</NavLink></li>
-        {/* <li><NavLink to="/home/add-new">Add New</NavLink></li> */}
-      </ul>
-    </nav>
+    <aside className="navbar">
+      <nav>
+        
+          <li><Link to="/home/dashboard" activeClassName="active-link">Dashboard</Link></li>
+          <li><Link to="/home/transactions" activeClassName="active-link">Transactions</Link></li>
+          <li><Link to="/home/balance-sheet" activeClassName="active-link">Balance Sheet</Link></li>
+          <li><Link to="/home/reports" activeClassName="active-link">Reports</Link></li>
+          <li><Link to="/home/settings" activeClassName="active-link">Settings</Link></li>
+        
+      </nav>
+    </aside>
   );
 }
 
 export default Navbar;
+
 
 
 

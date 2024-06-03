@@ -1,5 +1,5 @@
 
-const API_URL = 'http://192.168.0.127:8082/api'; // Replace with your API URL
+const API_URL = 'http://192.168.0.113:8082/api'; // Replace with your API URL
 
 export const AuthService = {
   login: async (userName, password) => {

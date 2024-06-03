@@ -26,7 +26,7 @@ const AddNew = () => {
               Authorization: `Bearer ${token}`
             }
           };
-          const response = await axios.get(`http://192.168.0.127:8082/api/transactions/${id}`, config);
+          const response = await axios.get(`http://192.168.0.113:8082/api/transactions/${id}`, config);
           setFormData(response.data);
         } catch (error) {
           console.error('Error fetching transaction:', error);
@@ -52,10 +52,10 @@ const AddNew = () => {
     };
     try {
       if (id) {
-        await axios.put(`http://192.168.0.127:8082/api/transactions/${id}`, formData, config);
+        await axios.put(`http://192.168.0.113:8082/api/transactions/${id}`, formData, config);
         alert('Transaction updated successfully');
       } else {
-        await axios.post('http://192.168.0.127:8082/api/transactions', formData, config);
+        await axios.post('http://192.168.0.113:8082/api/transactions', formData, config);
         alert('Transaction added successfully');
       }
       navigate('/home/transactions'); // Navigate to transactions page after successful submission

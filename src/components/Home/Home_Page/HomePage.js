@@ -118,6 +118,7 @@ import AddNew from '../Sidebar/Dashboard/Transactions/AddNew';
 import Navbar from '../Sidebar/Navbar/Navbar';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+
  
 function HomePage() {
   const [transactions, setTransactions] = useState([]);
@@ -147,7 +148,7 @@ function HomePage() {
  
   return (
 <div className="container">
-{/* <Header /> */}
+<Header />
 <div style={{ display: 'flex', minHeight: '100vh' }}>
 <Navbar />
 <div style={{ flexGrow: 1, padding: '20px' }}>
@@ -160,7 +161,7 @@ function HomePage() {
 <Route path="add-new/:id" element={<AddNew />} />
 <Route path="/" element={<Navigate to="transactions" />} />
 </Routes>
-{/* <Footer /> */}
+<Footer />
 </div>
 </div>
 </div>

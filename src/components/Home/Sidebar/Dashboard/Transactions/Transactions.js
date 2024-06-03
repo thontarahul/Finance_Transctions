@@ -24,7 +24,6 @@ const Transactions = () => {
   const token = localStorage.getItem('token');
 
   const columns = [
-    
     { field: 'description', headerName: 'Description', width: 200 },
     { field: 'date', headerName: 'Date', width: 150 },
     { field: 'amount', headerName: 'Amount', width: 150 },
@@ -56,7 +55,7 @@ const Transactions = () => {
           Authorization: `Bearer ${token}`
         }
       };
-      axios.delete(`http://192.168.0.127:8082/api/transactions/${deleteId}`, config)
+      axios.delete(`http://192.168.0.113:8082/api/transactions/${deleteId}`, config)
         .then(response => {
           console.log("Delete response:", response);
           alert("Delete successful");
@@ -75,7 +74,7 @@ const Transactions = () => {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.get('http://192.168.0.127:8082/api/transactions', config);
+      const response = await axios.get('http://192.168.0.113:8082/api/transactions', config);
       setTransactions(response.data);
     } catch (error) {
       console.error('Error fetching transaction data:', error);
@@ -99,28 +98,31 @@ const Transactions = () => {
   );
 
   return (
-    <Box sx={{ height: 600, width: '100%' }}>
-      <Typography variant="h4" gutterBottom>Transactions</Typography>
-      <Box display="flex" justifyContent="space-between" mb={2}>
-        <TextField label="Search" variant="outlined" value={searchQuery} onChange={handleSearchChange} />
-        <Select defaultValue="" displayEmpty>
-          <MenuItem value="">Transaction Type</MenuItem>
-          <MenuItem value="Income">Income</MenuItem>
-          <MenuItem value="Expense">Expense</MenuItem>
-        </Select>
-        <Select defaultValue="" displayEmpty>
-          <MenuItem value="">All Status</MenuItem>
-          <MenuItem value="Accepted">Accepted</MenuItem>
-          <MenuItem value="Pending">Pending</MenuItem>
-          <MenuItem value="Rejected">Rejected</MenuItem>
-        </Select>
-        <Button variant="contained" onClick={() => navigate('/home/add-new')}>Add New</Button>
+    <div className="container">
+      <Box sx={{ height: 400, width: '100%' }}>
+        <Typography variant="h4" gutterBottom>Transactions</Typography>
+        <Box display="flex" justifyContent="space-between" mb={2}>
+          <TextField label="Search" variant="outlined" value={searchQuery} onChange={handleSearchChange} />
+          <Select defaultValue="" displayEmpty>
+            <MenuItem value="">Transaction Type</MenuItem>
+            <MenuItem value="Income">Income</MenuItem>
+            <MenuItem value="Expense">Expense</MenuItem>
+          </Select>
+          <Select defaultValue="" displayEmpty>
+            <MenuItem value="">All Status</MenuItem>
+            <MenuItem value="Accepted">Accepted</MenuItem>
+            <MenuItem value="Pending">Pending</MenuItem>
+            <MenuItem value="Rejected">Rejected</MenuItem>
+          </Select>
+          <Button variant="contained" onClick={() => navigate('/home/add-new')}>Add New</Button>
+        </Box>
+        <DataGrid rows={filteredTransactions} columns={columns} pageSize={5} />
       </Box>
-      <DataGrid rows={filteredTransactions} columns={columns} pageSize={5} />
-    </Box>
+    </div>
   );
 }
 
 export default Transactions;
+
 
 

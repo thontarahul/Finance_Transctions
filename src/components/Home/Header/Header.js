@@ -3,16 +3,18 @@ import { AuthService } from '../../AuthService/Auth_Service/AuthService';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import headerimg from '../../../Assets/images/Home_img.jpg';
+
  
 const Header = () => {
   const navigate = useNavigate();
  
   const handleLogout = () => {
-    AuthService.removeToken();
-    navigate('/logout-success');
+    AuthService.clearToken();
+    navigate('/LogoutPage');
   };
  
   return (
+    
     <header className="header">
       <div className="logo">
         <img src={headerimg} alt="Financial Works Logo" />

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthService } from "../Auth_Service/AuthService"; 
- // Adjusted import
 import signupImg from '../../../Assets/images/signup_dataworks.jpg';
 import './SignupPage.css';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
