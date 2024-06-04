@@ -67,6 +67,7 @@
     cursor: pointer;
     width: 75%;
     font-size: 14px; /* Smaller font size */
+    margin-top:8px;
   }
   
   .login-button:hover {
@@ -97,4 +98,8 @@
     cursor: pointer;
     z-index: 1;
   }
-  
+
+  .forgot-password-link{
+    color:#1A237E;
+    text-decoration: none;
+    }
