@@ -1,11 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import { Box, Button, Typography, Select, MenuItem, TextField, IconButton } from '@mui/material';
 import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
-
+import './Transactions.css';
+import {finappaxios} from "../../../../../axios"
 const ActionsCell = ({ onEdit, onDelete, id }) => (
   <>
     <IconButton key={`edit_${id}`} onClick={onEdit}>
@@ -24,15 +24,12 @@ const Transactions = () => {
   const token = localStorage.getItem('token');
 
   const columns = [
-    { field: 'description', headerName: 'Description', width: 200 },
-    { field: 'date', headerName: 'Date', width: 150 },
-    { field: 'amount', headerName: 'Amount', width: 150 },
-    { field: 'type', headerName: 'Type', width: 150 },
-    { field: 'status', headerName: 'Status', width: 150 },
-    {
-      field: 'actions',
-      headerName: 'Actions',
-      width: 150,
+    { field: 'description', headerName: 'Description', width: 280 },
+    { field: 'date', headerName: 'Date', width: 200 },
+    { field: 'amount', headerName: 'Amount', width: 200 },
+    { field: 'type', headerName: 'Type', width: 200 },
+    { field: 'status', headerName: 'Status', width: 200 },
+    { field: 'actions', headerName: 'Actions', width: 200,
       renderCell: (params) => (
         <ActionsCell
           id={params.row.id}
@@ -55,7 +52,7 @@ const Transactions = () => {
           Authorization: `Bearer ${token}`
         }
       };
-      axios.delete(`http://192.168.0.113:8082/api/transactions/${deleteId}`, config)
+      finappaxios.delete(`/api/transactions/${deleteId}`, config)
         .then(response => {
           console.log("Delete response:", response);
           alert("Delete successful");
@@ -74,7 +71,7 @@ const Transactions = () => {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.get('http://192.168.0.113:8082/api/transactions', config);
+      const response = await finappaxios.get('/api/transactions', config);
       setTransactions(response.data);
     } catch (error) {
       console.error('Error fetching transaction data:', error);
@@ -98,7 +95,7 @@ const Transactions = () => {
   );
 
   return (
-    <div className="container">
+    <div className="Table">
       <Box sx={{ height: 400, width: '100%' }}>
         <Typography variant="h4" gutterBottom>Transactions</Typography>
         <Box display="flex" justifyContent="space-between" mb={2}>
@@ -123,6 +120,4 @@ const Transactions = () => {
 }
 
 export default Transactions;
-
-
 

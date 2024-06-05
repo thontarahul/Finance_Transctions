@@ -2,7 +2,7 @@
   "name": "finapp",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.168.0.127:8082",
+  "proxy": "http://192.168.0.108:8082",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "dayjs": "^1.11.11",
+    "env-cmd": "^10.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
@@ -22,11 +23,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set NODE_OPTIONS=--max-old-space-size=4096 && react-scripts start",
     "build": "react-scripts build",
+    "start": "env-cmd -f .env.local react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
+
   "eslintConfig": {
     "extends": [
       "react-app",

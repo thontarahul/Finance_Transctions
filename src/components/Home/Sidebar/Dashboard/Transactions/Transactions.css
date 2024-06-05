@@ -1,0 +1,73 @@
+
+
+    /* Transactions.css */
+
+  .Table {
+    margin-left: 280px; /* Adjust for the navbar width */
+    position:fixed;
+    
+    
+    /* margin-top: 20px; 
+
+     padding: 20px; */
+      /* width: calc(100%);  */
+  
+      /* Adjust width to account for the navbar  */ 
+     /* box-sizing: border-box; Ensures padding doesn't add to the width */
+  } 
+  
+  .transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top:30px;
+  }
+  
+  .transactions-header .MuiTextField-root,
+  .transactions-header .MuiSelect-root,
+  .transactions-header .MuiButton-root {
+    margin-right: 10px;
+  } 
+  
+   .transactions-header .MuiSelect-root {
+    min-width: 100px;
+  }
+  
+  .transactions-header .MuiButton-root {
+    margin-left: auto;
+  }
+  
+  .MuiDataGrid-root {
+    background-color: white;
+    width:99%
+  }
+  
+  .MuiDataGrid-columnHeader {
+    background-color: #f4f4f9;
+  }
+  
+  .MuiDataGrid-cell {
+    font-size: 14px;
+  } 
+   
+
+    .transactions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+   
+  .transactions-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+   
+  .transactions-header .MuiTextField-root,
+  .transactions-header .MuiSelect-root {
+    margin-right: 10px;
+  }
+  
+  

@@ -1,5 +1,6 @@
 
-const API_URL = 'http://192.168.0.113:8082/api'; // Replace with your API URL
+const API_URL = 'http://192.168.0.108:8082/api';
+
 
 export const AuthService = {
   login: async (userName, password) => {
@@ -48,4 +49,42 @@ export const AuthService = {
     localStorage.removeItem('token');
   },
 };
+
+
+
+// Import the axios instance
+// import {finappaxios} from "../../../../../axios"  
+
+// export const AuthService = {
+//   login: async (userName, password) => {
+//     try {
+//       const response = await finappaxios.post('/api/login', { userName, password });
+//       return response.data;
+//     } catch (error) {
+//       throw new Error('Login failed');
+//     }
+//   },
+
+//   register: async (username, password, confirmPassword) => {
+//     try {
+//       const response = await finappaxios.post('/app/register', { username, password, confirmPassword });
+//       return response.data;
+//     } catch (error) {
+//       throw new Error('Registration failed');
+//     }
+//   },
+
+//   setToken: (token) => {
+//     localStorage.setItem('token', token);
+//   },
+
+//   getToken: () => {
+//     return localStorage.getItem('token');
+//   },
+
+//   clearToken: () => {
+//     localStorage.removeItem('token');
+//   },
+// };
+
 

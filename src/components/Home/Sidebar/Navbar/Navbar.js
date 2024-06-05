@@ -4,15 +4,15 @@ import './Navbar.css';
 
 function Navbar() {
   return (
-    <aside className="navbar">
+    <aside className="Navbar">
       <nav>
-        
+        <ul>
           <li><Link to="/home/dashboard" activeClassName="active-link">Dashboard</Link></li>
           <li><Link to="/home/transactions" activeClassName="active-link">Transactions</Link></li>
           <li><Link to="/home/balance-sheet" activeClassName="active-link">Balance Sheet</Link></li>
           <li><Link to="/home/reports" activeClassName="active-link">Reports</Link></li>
-          <li><Link to="/home/settings" activeClassName="active-link">Settings</Link></li>
-        
+          <li style={{paddingbottom:'100px'}}><Link to="/home/settings" activeClassName="active-link">Settings</Link></li>
+          </ul>
       </nav>
     </aside>
   );
