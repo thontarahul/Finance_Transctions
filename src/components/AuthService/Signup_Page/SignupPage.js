@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthService } from "../Auth_Service/AuthService"; 
@@ -8,6 +9,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 function SignupPage() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -24,9 +26,19 @@ function SignupPage() {
     }
 
     try {
-      await AuthService.register(username, password, confirmPassword);  // Using named export
-      setIsRegistered(true); // Set registration state to true upon success
+      const response = await AuthService.register(username, email, password, confirmPassword);
+      console.log('API response:', response); // Debugging line
+      if (response.status === 201 || response.status === 200 ) { // Check for successful registration status
+        console.log(response);
+        const userResponseId = response.data.id;
+        
+        localStorage.setItem('user_id_response', userResponseId);
+        setIsRegistered(true); // Set registration state to true upon success
+      } else {
+        setError("Failed to register");
+      }
     } catch (error) {
+      console.error('Registration error:', error); // Debugging line
       setError("Failed to register");
     }
   };
@@ -53,6 +65,15 @@ function SignupPage() {
                 placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -111,6 +132,3 @@ function SignupPage() {
 }
 
 export default SignupPage;
-
-
-

@@ -1,12 +1,16 @@
+
 import React from 'react';
 
 function Dashboard() {
-  return 
-  <div>
-    <center>
+  return (
+    <div >
       Dashboard Content
-    </center>
-  </div>;
+    </div>
+  );
 }
 
 export default Dashboard;
+
+
+
+ 

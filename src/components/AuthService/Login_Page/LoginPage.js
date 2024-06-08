@@ -1,12 +1,9 @@
 
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthService } from "../Auth_Service/AuthService"
+import { AuthService } from "../Auth_Service/AuthService";
 import loginImg from "../../../Assets/images/login dataworks.jpg";
-import "./LoginPage.css";
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
 
 function LoginPage() {
   const [userName, setUsername] = useState("");
@@ -34,51 +31,56 @@ function LoginPage() {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="bg-white rounded-lg shadow-md p-8 w-80">
         <img
           src={loginImg}
           alt="Financial Works Logo"
-          className="logo"
+          className="w-40 mx-auto mb-7"
         />
-        <h2>Log in</h2>
-        <form onSubmit={handleLogin}>
-          <div className="input-group">
+        <h2 className="text-xl font-semibold text-center mb-6">Log in</h2>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="flex flex-col space-y-1">
             <input
               type="text"
               placeholder="Enter Username"
               value={userName}
               onChange={(e) => setUsername(e.target.value)}
               required
+              className="mt-1 p-1 w-70 border rounded-md bg-gray-200 focus:outline-none"
             />
           </div>
-          <div className="input-group password-input">
+          <div className="flex flex-col relative space-y-1">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="mt-1 p-1 w-70 border rounded-md bg-gray-200 focus:outline-none"
             />
             {showPassword ? (
-              <VisibilityIcon
-                className="password-toggle-icon"
+              <EyeIcon
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               />
             ) : (
-              <VisibilityOffIcon
-                className="password-toggle-icon"
+              <EyeOffIcon
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 w-6 h-6 cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               />
             )}
           </div>
-          <button type="submit" className="login-button">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white rounded-md py-2"
+          >
             Log in
           </button>
           <p>
-            Not a member? <Link to="/signup" className="signup-link">Sign-up now</Link>
+            Not a member? <Link to="/signup" className="text-blue-500 font-semibold">Sign-up now</Link>
           </p>
-          {error && <p className="error-message">{error}</p>}
+          {error && <p className="text-red-500">{error}</p>}
         </form>
       </div>
     </div>
@@ -86,5 +88,4 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
 

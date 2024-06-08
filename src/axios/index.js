@@ -22,3 +22,8 @@ export const finappaxios = axios.create({
   baseURL: process.env.REACT_APP_API_URL_FINAPP,  
   headers: {"Authorization" : `Bearer ${tokenAccess}`}
 });
+
+
+export const loginaxios = axios.create({
+  baseURL: process.env.REACT_APP_API_URL_FINAPP
+});

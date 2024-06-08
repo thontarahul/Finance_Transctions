@@ -1,73 +1,79 @@
 
 
-    /* Transactions.css */
+  /* Transactions.css */
 
-  .Table {
-    margin-left: 280px; /* Adjust for the navbar width */
-    position:fixed;
-    
-    
-    /* margin-top: 20px; 
+/* .table-container {
+  margin-left: 275px; /* Adjust for the navbar width */
+  /* position: fixed;
+  margin-top: 15px;
+}
 
-     padding: 20px; */
-      /* width: calc(100%);  */
+.transactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 30px;
   
-      /* Adjust width to account for the navbar  */ 
-     /* box-sizing: border-box; Ensures padding doesn't add to the width */
-  } 
-  
-  .transactions-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    margin-top:30px;
-  }
-  
-  .transactions-header .MuiTextField-root,
-  .transactions-header .MuiSelect-root,
-  .transactions-header .MuiButton-root {
-    margin-right: 10px;
-  } 
-  
-   .transactions-header .MuiSelect-root {
-    min-width: 100px;
-  }
-  
-  .transactions-header .MuiButton-root {
-    margin-left: auto;
-  }
-  
-  .MuiDataGrid-root {
-    background-color: white;
-    width:99%
-  }
-  
-  .MuiDataGrid-columnHeader {
-    background-color: #f4f4f9;
-  }
-  
-  .MuiDataGrid-cell {
-    font-size: 14px;
-  } 
-   
+}
 
-    .transactions-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-   
-  .transactions-header {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-   
-  .transactions-header .MuiTextField-root,
-  .transactions-header .MuiSelect-root {
-    margin-right: 10px;
-  }
+.trans-text-field
+ {
+  margin-right: 20px;
+  border-radius: 150px;
+ 
+ }
+
+.trans-select-field {
+  margin-right: 20px;
+  border-radius: 150px;
+ }
+
+.trans-button{
+  margin-right: 5px;
+  border-radius: 10px;
+  padding: 7px 25px 7px 25px;
+  font-size: medium;
+}
+
+.Add-icon {
+  width: 27px;
+  height: 25px;
+  margin-right: 6px;
+}
+
+.Clock-icon {
+  width: 27px;
+  height: 25px;
+  margin-right: 6px;
   
-  
+}
+
+.trans-status-field {
+  min-width: 100px;
+  border-radius: 50px;
+} */
+
+
+/* .data-grid {
+  background-color: white;
+  width: 99%;
+}
+
+.data-grid-column-header {
+  background-color: #f4f4f9;
+}
+
+.data-grid-cell {
+  font-size: 14px;
+}
+
+/* Container for transactions */
+/* .transactions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}  */ 
+
+
+

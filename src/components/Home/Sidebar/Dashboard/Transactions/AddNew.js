@@ -1,19 +1,21 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Button, TextField, Typography } from '@mui/material';
-import {finappaxios} from "../../../../../axios"
+import { finappaxios } from '../../../../../axios';
 
-const AddNew = () => {
+const AddNew = ({ addTransaction }) => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const userID = localStorage.getItem('userID');
+  const userIDString = localStorage.getItem('user_id_response');
+  const userID = parseInt(userIDString, 10);
+  
+
   const [formData, setFormData] = useState({
     description: '',
     date: '',
-    amount: '',
+    amount: 0,
     type: '',
-    userId: userID
+    userId: userID,
   });
   const token = localStorage.getItem('token');
 
@@ -23,8 +25,8 @@ const AddNew = () => {
         try {
           const config = {
             headers: {
-              Authorization: `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           };
           const response = await finappaxios.get(`/api/transactions/${id}`, config);
           setFormData(response.data);
@@ -37,83 +39,128 @@ const AddNew = () => {
   }, [id, token]);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    let parsedValue;
+  
+    // Validate input value for amount
+    if (name === 'amount') {
+      // Check if the value is a valid integer string
+      const isValidAmount = /^\d+$/.test(value);
+      parsedValue = isValidAmount ? parseInt(value, 10) : ''; // If not valid, set empty string
+    } else {
+      parsedValue = value;
+    }
+  
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: parsedValue,
     });
   };
-
+  
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form Data:', formData);
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
     try {
+      let response;
       if (id) {
-        await finappaxios.put(`/api/transactions/${id}`, formData, config);
-        alert('Transaction updated successfully');
+        response = await finappaxios.put(`/api/transactions/${id}`, formData, config);
       } else {
-        await finappaxios.post('/api/transactions', formData, config);
-        alert('Transaction added successfully');
+        response = await finappaxios.post('/api/transactions', formData, config);
       }
-      navigate('/home/transactions'); // Navigate to transactions page after successful submission
+      // addTransaction(response.data); 
+      
+      if (response.status === 200 || response.status === 201) {
+        console.log('response status:',  response.status);
+        navigate('/home/transactions');
+        if (id) {
+          alert('Transaction updated successfully');
+        } else {
+          alert('Transaction added successfully');
+        }
+        // Navigate to transactions page after successful submission
+      }
     } catch (error) {
       console.error('Error saving transaction:', error);
     }
   };
- 
+  
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 600, mx: 'auto' }}>
-      <Typography variant="h4" gutterBottom>{id ? 'Edit Transaction' : 'Add Transaction'}</Typography>
-      <TextField
-        label="Description"
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        label="Date"
-        name="date"
-        value={formData.date}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        label="Amount"
-        name="amount"
-        value={formData.amount}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        label="Type"
-        name="type"
-        value={formData.type}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-      />
-      <TextField
-        label="Status"
-        name="status"
-        value={formData.status}
-        onChange={handleChange}
-        fullWidth
-        margin="normal"
-      />
-      <Button type="submit" variant="contained" color="primary">{id ? 'Update' : 'Add'}</Button>
-    </Box>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="max-w-xl w-full mx-auto p-8 bg-white shadow-md rounded-2xl h-280">
+        <h1 className="text-2xl font-semibold mb-6 text-left text-indigo-900">{id ? 'Edit Transaction' : 'Add Transaction'}</h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-2 gap-6">
+            <div>
+              <label className="block text-md font-medium text-gray-700 pb-2 text-black">Type</label>
+              <input
+                type="text"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+                className="mt-1 p-3 w-full border rounded-xl bg-gray-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-md font-medium text-gray-700 pb-2 text-black">Description</label>
+              <input
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className="mt-1 p-3 w-full border rounded-xl bg-gray-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-md font-medium text-gray-700 pb-2 text-black">Amount</label>
+              <input
+                type="text"
+                name="amount"
+                value={formData.amount}
+                onChange={handleChange}
+                className="mt-1 p-3 w-full border rounded-xl bg-gray-200 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-md font-medium text-gray-700 pb-2 text-black">Date</label>
+              <input
+                type="datetime-local"
+                name="date"
+                value={formData.date}
+                onChange={handleChange}
+                className="mt-1 p-3 w-full border rounded-xl bg-gray-200 focus:outline-none"
+              />
+            </div>
+          </div>
+          <div className="flex justify-end space-x-4">
+            <button
+              type="button"
+              onClick={() => navigate('/home/transactions')}
+              className="px-4 py-2 border border-gray-300 rounded-md text-gray-700"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            >
+              {id ? 'Update' : 'Add'}
+              
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 };
 
+
+
 export default AddNew;
-
-
 
