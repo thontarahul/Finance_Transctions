@@ -1,17 +1,19 @@
 
 const API_URL = 'http://192.168.0.113:8082/api'; // Replace with your API URL
 
+
+
 export const AuthService = {
   login: async (userName, password) => {
     const response = await fetch(`${API_URL}/login`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json',  
       },
       body: JSON.stringify({ userName, password }),
     });
 
-    if (!response.ok) {
+    if (!response.ok) { 
       throw new Error('Login failed');
     }
 
@@ -19,13 +21,13 @@ export const AuthService = {
     return data;
   },
 
-  register: async (username, password, confirmPassword) => {
+  register: async (username, email, password, confirmPassword) => {
     const response = await fetch(`${API_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password, confirmPassword }),
+      body: JSON.stringify({ username, email, password, confirmPassword }),
     });
 
     if (!response.ok) {

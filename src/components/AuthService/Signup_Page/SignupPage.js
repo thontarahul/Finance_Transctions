@@ -8,12 +8,14 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 function SignupPage() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [error, setError] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleRegister = async (event) => {
@@ -24,7 +26,7 @@ function SignupPage() {
     }
 
     try {
-      await AuthService.register(username, password, confirmPassword);  // Using named export
+      await AuthService.register(username, email, password, confirmPassword); // Updated to include email
       setIsRegistered(true); // Set registration state to true upon success
     } catch (error) {
       setError("Failed to register");
@@ -53,6 +55,15 @@ function SignupPage() {
                 placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="email" // Email input
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -99,7 +110,7 @@ function SignupPage() {
             <button type="submit" className="signup-button">
               Sign-up
             </button>
-            <p>
+            <p>  
               Have an account? <Link to="/login" className="login-link">Login now</Link>
             </p>
             {error && <p className="error-message">{error}</p>}
@@ -111,6 +122,4 @@ function SignupPage() {
 }
 
 export default SignupPage;
-
-
 

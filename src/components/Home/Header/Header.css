@@ -5,6 +5,7 @@
   padding: 20px;
   background-color: #f8f9fa;
   border-bottom: 1px solid #e0e0e0;
+ 
 }
 
 .header .logo img {
@@ -22,7 +23,7 @@
 }
 
 .header .logout-button {
-  padding: 8px 16px;
+  padding: 8px 16px; 
   background-color: #007bff;
   color: white;
   border: none;

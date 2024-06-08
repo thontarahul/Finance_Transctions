@@ -55,6 +55,7 @@ import HomePage from "./components/Home/Home_Page/HomePage";
 import LogoutPage from "./components/AuthService/Auth_Service/Logout_Page/LogoutPage";
 import ForgotPassword from "./components/ForgotPassword_Page/ForgotPassword";
 import VerificationPage from "./components/AuthService/Auth_Service/VerificationPage/VerificationPage"; // Import VerificationPage
+import ResetPassword from "./components/ForgotPassword_Page/ResetPassword";
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
         <Route path="/logoutPage" element={<LogoutPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verification" element={<VerificationPage />} /> {/* Add the VerificationPage route */}
+        <Route path="/reset-password" element={<ResetPassword />}/>
       </Routes>
     </Router>
   );
