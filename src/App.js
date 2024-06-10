@@ -97,7 +97,10 @@ import HomePage from "./components/Home/Home_Page/HomePage";
 import LogoutPage from "./components/AuthService/Auth_Service/Logout_Page/LogoutPage";
 import AddNew from "./components/Home/Sidebar/Dashboard/Transactions/AddNew";
 import Layout from "./components/Home/Layout/Layout"; // Import the Layout component
-// import SimpleLayout from "./components/SimpleLayout/SimpleLayout"; // Import the SimpleLayout component
+import ForgotPassword from "./components/ForgotPassword_Page/ForgotPassword";
+import VerificationPage from "./components/AuthService/Auth_Service/VerificationPage/VerificationPage"; // Import VerificationPage
+import ResetPassword from "./components/ForgotPassword_Page/ResetPassword";
+
 
 function App() {
   return (
@@ -109,9 +112,10 @@ function App() {
         <Route path="/logoutPage" element={<LogoutPage />} />
         <Route path="add-new" element={<AddNew />}/>
         <Route path="add-new/:id" element={<AddNew />}/>
-        {/* <Route path="/add-new" element={<SimpleLayout><AddNew /> </SimpleLayout> } />Route for adding new */}
-        {/* <Route path="/add-new/:id" element={<SimpleLayout><AddNew /> </SimpleLayout> } /> Route for editing */}
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/verification" element={<VerificationPage />} /> {/* Add the VerificationPage route */}
+        <Route path="/reset-password" element={<ResetPassword />}/>
       </Routes>
     </Router>
   );

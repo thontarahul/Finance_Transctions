@@ -107,7 +107,7 @@ const Transactions = () => {
         <div className="flex justify-between items-center mb-3">
           <input
             type="text"
-            className="border rounded-full px-2 py-1 mr-4"
+            className="border rounded-full px-1 py-1 mr-4"
             placeholder="Search"
             value={searchQuery}
             onChange={handleSearchChange}
