@@ -127,7 +127,7 @@ function Navbar() {
                   <span className="hover:text-blue-800">Reports</span>
                 </Link>
             </li>
-            <li className="mt-80">
+            <li className="mt-2">
                 <Link to="/home/settings" className="flex items-center p-2 rounded hover:bg-pink-50">
                   <img src= {Settings} alt="setting Icon" className="h-6 w-6 mr-2" />
                   <span className="hover:text-blue-800">Settings</span>
